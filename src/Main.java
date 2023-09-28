@@ -10,12 +10,15 @@ public class Main {
             int num = scanner.nextInt();
             if(num == 1) {
                 firstTask();
+            }else if(num == 2) {
+                secondTask();
             }else {
                 System.out.println("Exit. - ->");
                 break;
             }
         } while(true);
     }
+
     public static void firstTask() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your last name: ");
@@ -23,7 +26,7 @@ public class Main {
 
         Account firstAccout = new Account(userName);
         do {
-            System.out.print("Enter:\n'1' - change Name\n'2' - withdraw money\n'3' - top up money\n'4' - withdraw money\n'5' - calculateInterest\n'6' - Get info\n");
+            System.out.print("Enter:\n'1' - change Name\n'2' - withdraw money\n'3' - top up money\n'4' - calculateInterest\n'5' - Get info\n'6' - Exit - -> .\n");
             int number = scanner.nextInt();
 
             if(number == 1) {
@@ -33,14 +36,26 @@ public class Main {
             }else if(number == 3) {
                 firstAccout.topUpMoney();
             }else if(number == 4) {
-                firstAccout.withdrawMoney();
-            }else if(number == 5) {
                 firstAccout.calculateInterest();
-            }else if(number == 6){
+            }else if(number == 5){
                 firstAccout.getInfo();
-            }else {
+            }else if(number == 6){
                 break;
+            }else {
+                System.out.println("Try again");
             }
         } while(true);
+    }
+    public static void secondTask() {
+        ComplexNumber number1 = new ComplexNumber(3, 4);
+        ComplexNumber number2 = new ComplexNumber(3, 4);
+
+        System.out.println(number1.module());
+        System.out.println(number1.argument());
+        System.out.println(number1.add(number2).getNumber());
+        System.out.println(number1.subtract(number2).getNumber());
+        System.out.println(number1.multiply(number2).getNumber());
+        System.out.println(number1.divide(number2).getNumber());
+        System.out.println(number1.conjugate().getNumber());
     }
 }
