@@ -12,7 +12,10 @@ public class Main {
                 firstTask();
             }else if(num == 2) {
                 secondTask();
-            }else {
+            }else if(num == 3) {
+                thirdTask();
+            }
+            else {
                 System.out.println("Exit. - ->");
                 break;
             }
@@ -49,6 +52,29 @@ public class Main {
     public static void secondTask() {
         ComplexNumber number1 = new ComplexNumber(3, 4);
         ComplexNumber number2 = new ComplexNumber(3, 4);
+
+        System.out.println(number1.module());
+        System.out.println(number1.argument());
+        System.out.println(number1.add(number2).getNumber());
+        System.out.println(number1.subtract(number2).getNumber());
+        System.out.println(number1.multiply(number2).getNumber());
+        System.out.println(number1.divide(number2).getNumber());
+        System.out.println(number1.conjugate().getNumber());
+    }
+    public static void thirdTask() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter first real number: ");
+        double first_real = scanner.nextDouble();
+        System.out.print("Enter first imaginary number: ");
+        double first_imaginary = scanner.nextDouble();
+        System.out.print("Enter second real number: ");
+        double second_real = scanner.nextDouble();
+        System.out.print("Enter second imaginary number: ");
+        double second_imaginary = scanner.nextDouble();
+
+        Complex number1 = new Complex(first_real, first_imaginary);
+        Complex number2 = new Complex(second_real, second_imaginary);
 
         System.out.println(number1.module());
         System.out.println(number1.argument());
