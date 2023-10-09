@@ -12,18 +12,17 @@ public class Account {
         this.interestRate = 7;
         this.balance = 0;
     }
-    public void getInfo() {
-        System.out.println("- - - - - - - - - - - - -");
-        System.out.println("Last Namae: " + this.lastName);
-        System.out.println("Account number: " + this.accountNumber);
-        System.out.println("Interseted rate: " + this.interestRate);
-        System.out.println("Balance: " + this.balance + "грн.");
-        System.out.println("- - - - - - - - - - - - -");
+    @Override
+    public String toString() {
+        return "- - - - - - - - - - - - -" + 
+        "\nLast Namae: " + this.lastName + 
+        "\nAccount number: " + this.accountNumber + 
+        "\nInterseted rate: " + this.interestRate + 
+        "\nBalance: " + this.balance + "грн." + 
+        "\n- - - - - - - - - - - - -";
     }
-    public void changeOwner() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter new user Name: ");
-        this.lastName = scanner.nextLine();
+    public void changeOwner(String newOwner) {
+        this.lastName = newOwner;
     }
     public void withdrawMoney() {
         Scanner scanner = new Scanner(System.in);
@@ -41,26 +40,11 @@ public class Account {
             }
         }while(true);
     }
-    public void topUpMoney() {
-        Scanner scanner = new Scanner(System.in);
-
-        do{
-            System.out.print("Enter top up amount: ");
-            double amount = scanner.nextDouble();
-            if(amount < 0) {
-                System.out.println("Not correct amount.");
-            }else {
-                this.balance += amount;
-                System.out.println("Successful transaction.");
-                break;
-            }
-        }while(true);
+    public void topUpMoney(double amount) {
+        this.balance += amount;
     }
     public void calculateInterest() {
         double calculateInterest = this.balance * (this.interestRate / 100);
         balance += calculateInterest;
-    }
-    public void getSum() {
-
     }
 }

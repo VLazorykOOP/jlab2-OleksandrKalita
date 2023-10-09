@@ -29,19 +29,31 @@ public class Main {
 
         Account firstAccout = new Account(userName);
         do {
-            System.out.print("Enter:\n'1' - change Name\n'2' - withdraw money\n'3' - top up money\n'4' - calculateInterest\n'5' - Get info\n'6' - Exit - -> .\n");
+            System.out.print("'1' - change Name\n'2' - withdraw money\n'3' - top up money\n'4' - calculateInterest\n'5' - Get info\n'6' - Exit - -> .\nEnter:");
             int number = scanner.nextInt();
 
             if(number == 1) {
-                firstAccout.changeOwner();
+                System.out.println("Enter new user Name: ");
+                String name = scanner.nextLine();
+                firstAccout.changeOwner(name);
             }else if(number == 2) {
                 firstAccout.withdrawMoney();
             }else if(number == 3) {
-                firstAccout.topUpMoney();
+                do{
+                    System.out.print("Enter top up amount: ");
+                    double amount = scanner.nextDouble();
+                    if(amount < 0) {
+                        System.out.println("Not correct amount.");
+                    }else {
+                        firstAccout.topUpMoney(amount);
+                        System.out.println("Successful transaction.");
+                        break;
+                    }
+                }while(true);
             }else if(number == 4) {
                 firstAccout.calculateInterest();
             }else if(number == 5){
-                firstAccout.getInfo();
+                System.out.println(firstAccout.toString());
             }else if(number == 6){
                 break;
             }else {
@@ -63,7 +75,7 @@ public class Main {
     }
     public static void thirdTask() {
         Scanner scanner = new Scanner(System.in);
-        
+
         System.out.print("Enter first real number: ");
         double first_real = scanner.nextDouble();
         System.out.print("Enter first imaginary number: ");
@@ -85,3 +97,11 @@ public class Main {
         System.out.println(number1.conjugate().getNumber());
     }
 }
+
+/* 
+Є основна функція Main в якій реалізоване меню між трьома завданнями
+за допомогою цикла do while, та 3 функції з інтерфейсами до кожного завдання
+(firstTask, secondTask, thirdTask).
+
+
+*/
